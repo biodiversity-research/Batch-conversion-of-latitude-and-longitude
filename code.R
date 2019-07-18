@@ -1,0 +1,12 @@
+library(devtools)
+install_github('badbye/baidumap')
+getwd()
+setwd("C:/Users/optif/Desktop")
+add <- read.table('address_list.txt',header = F, col.names=c('address'),as.is = c(1))
+View(add)
+add <- add$address   #转化为向量格式，备for循环使用
+head(add)
+library(baidumap)
+options(baidumap.key='nSxiPohfziUaCuONe4ViUP2N')
+shuchu<- getCoordinate(add, formatted = T)
+write.csv(shuchu,"shuchu.csv")
